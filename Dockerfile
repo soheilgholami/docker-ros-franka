@@ -29,8 +29,6 @@ RUN cmake --build .
 RUN cpack -G DEB
 RUN dpkg -i libfranka*.deb
 
-# ENV CMAKE_PREFIX_PATH="/usr/local:$CMAKE_PREFIX_PATH"
-
 # franka_ros
 WORKDIR /catkin_ws
 RUN mkdir src
@@ -40,7 +38,6 @@ RUN rosdep install --from-paths src --ignore-src --rosdistro noetic -y --skip-ke
 RUN source /opt/ros/noetic/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build
 
 # bashrc: source ROS
-# RUN echo "source /ros_entrypoint.bash" >> /root/.bashrc
 RUN echo "source /catkin_ws/devel/setup.bash" >> /root/.bashrc
 
 # Pinocchio 
