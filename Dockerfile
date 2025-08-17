@@ -13,6 +13,11 @@ RUN apt-get update && apt-get install -y \
     libeigen3-dev \ 
     lsb-release \
     bash-completion 
+
+# VRPN (Streaming OptiTrack data)
+RUN apt-get update && apt-get install -y \ 
+    netbase \
+    ros-noetic-vrpn-client-ros
     
 # libfranka
 RUN git clone --recursive https://github.com/frankaemika/libfranka --branch 0.8.0
